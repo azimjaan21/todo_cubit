@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text("Tasbih App"),
+          title: const Text("Counter App"),
           centerTitle: true,
         ),
         body: Center(
