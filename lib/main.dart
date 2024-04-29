@@ -39,57 +39,58 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text("Counter App"),
-          centerTitle: true,
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              BlocListener<CounterCubit, CounterState>(
-                listener: (context, state) {
-                  if (state is CounterError) {
-                    showDialog(
-                      context: context,
-                      builder: (ctx) {
-                        return AlertDialog(
-                          content: Text(state.message),
-                        );
-                      },
-                    );
-                  }
-                },
-                child: BlocBuilder<CounterCubit, CounterState>(
-                  builder: (context, state) {
-                    if (state is CounterLoading) {
-                      return const CircularProgressIndicator();
-                    }
-                    return Text(
-                      '${BlocProvider.of<CounterCubit>(context, listen: true).state.number}',
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
-        floatingActionButton: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: const Text("Counter App"),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            FloatingActionButton(
-              onPressed: BlocProvider.of<CounterCubit>(context).reset,
-              tooltip: 'Reset',
-              child: const Icon(Icons.restore),
-            ),
-            FloatingActionButton(
-              onPressed: BlocProvider.of<CounterCubit>(context).increment,
-              tooltip: 'Increment',
-              child: const Icon(Icons.add),
+            BlocListener<CounterCubit, CounterState>(
+              listener: (context, state) {
+                if (state is CounterError) {
+                  showDialog(
+                    context: context,
+                    builder: (ctx) {
+                      return AlertDialog(
+                        content: Text(state.message),
+                      );
+                    },
+                  );
+                }
+              },
+              child: BlocBuilder<CounterCubit, CounterState>(
+                builder: (context, state) {
+                  if (state is CounterLoading) {
+                    return const CircularProgressIndicator();
+                  }
+                  return Text(
+                    '${BlocProvider.of<CounterCubit>(context, listen: true).state.number}',
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  );
+                },
+              ),
             ),
           ],
-        ));
+        ),
+      ),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          FloatingActionButton(
+            onPressed: BlocProvider.of<CounterCubit>(context).reset,
+            tooltip: 'Reset',
+            child: const Icon(Icons.restore),
+          ),
+          FloatingActionButton(
+            onPressed: BlocProvider.of<CounterCubit>(context).increment,
+            tooltip: 'Increment',
+            child: const Icon(Icons.add),
+          ),
+        ],
+      ),
+    );
   }
 }
