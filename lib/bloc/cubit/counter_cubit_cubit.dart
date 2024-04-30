@@ -6,14 +6,15 @@ class CounterCubit extends Cubit<CounterState> {
   CounterCubit() : super(CounterInitial(0));
 
   void reset() async {
-    emit(CounterLoading(state.number));
+      emit(CounterLoading(state.number));
     await Future.delayed(const Duration(seconds: 2));
     emit(CounterError(state.number, 'Please, Check Network Connection!'));
   }
 
   void increment() async {
     emit(CounterLoading(state.number));
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     emit(CounterCounted(state.number + 1));
+  
   }
 }
