@@ -3,7 +3,7 @@ import 'package:bloc/bloc.dart';
 part 'counter_cubit_state.dart';
 
 class CounterCubit extends Cubit<CounterState> {
-  CounterCubit() : super(CounterInitial(0));
+  CounterCubit() : super(CounterInitial(1));
 
   void reset() async {
       emit(CounterLoading(state.number));
@@ -13,7 +13,7 @@ class CounterCubit extends Cubit<CounterState> {
 
   void increment() async {
     emit(CounterLoading(state.number));
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 2));
     emit(CounterCounted(state.number + 1));
   
   }
