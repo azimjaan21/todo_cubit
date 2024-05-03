@@ -5,7 +5,7 @@ abstract class CounterState {
 
   CounterState(this.number);
 }
-
+//this cubit states to control our apps states. No need to pay for course. You know English and it is your better sides than others!
 class CounterInitial extends CounterState {
   CounterInitial(super.number);
 }
