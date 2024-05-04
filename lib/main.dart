@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (ctx) => CounterCubit(),
       child: MaterialApp(
-        title: 'Counter App With Cubit',
+        title: 'Counter App with Cubit',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
